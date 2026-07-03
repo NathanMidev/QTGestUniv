@@ -2,6 +2,7 @@
 #define UTILISATEUR_H
 
 #include <QString>
+#include <QList>
 
 class Utilisateur
 {
@@ -26,6 +27,19 @@ public:
     void setPassword(const QString &password);
     void setEmail(const QString &email);
     void setRole(const QString &role);
+
+    // CRUD
+    bool create();
+    bool update();
+    bool remove(int id);
+
+    static Utilisateur getById(int id);
+    static QList<Utilisateur> getAll();
+
+    // Authentification
+    static bool login(const QString &username,
+                      const QString &password,
+                      Utilisateur &user);
 };
 
 #endif // UTILISATEUR_H

@@ -1,6 +1,8 @@
 #ifndef NOTE_H
 #define NOTE_H
 
+#include <QList>
+
 class Note
 {
 private:
@@ -27,6 +29,14 @@ public:
     void setNoteCC(float note);
     void setNoteExamen(float note);
     void setNoteFinale(float note);
+
+    // CRUD
+    bool create();
+    bool update();
+    bool remove(int id);
+
+    static Note getById(int id);
+    static QList<Note> getAll();
 };
 
 #endif // NOTE_H

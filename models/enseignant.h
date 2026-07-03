@@ -2,6 +2,7 @@
 #define ENSEIGNANT_H
 
 #include <QString>
+#include <QList>
 
 class Enseignant
 {
@@ -29,6 +30,14 @@ public:
     void setPrenom(const QString &prenom);
     void setEmail(const QString &email);
     void setSpecialite(const QString &specialite);
+
+    // CRUD
+    bool create();
+    bool update();
+    bool remove(int id);
+
+    static Enseignant getById(int id);
+    static QList<Enseignant> getAll();
 };
 
 #endif // ENSEIGNANT_H
