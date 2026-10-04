@@ -40,8 +40,11 @@ SOURCES += \
         utils/pdfexporter.cpp
 
 HEADERS += \
+        controllers/enseignantcontroller.h \
         controllers/etudiantcontrolleur.h \
         controllers/logincontroller.h \
+        controllers/matierecontroller.h \
+        controllers/notecontroller.h \
         database/databaseinitializer.h \
         database/databasemanager.h \
         mainwindow.h \

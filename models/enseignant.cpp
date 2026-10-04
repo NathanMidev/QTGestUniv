@@ -1,13 +1,15 @@
 #include "models/enseignant.h"
-#include "database/DatabaseManager.h"
+#include "database/databasemanager.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QVariant>
 
 Enseignant::Enseignant()
 {
     id = 0;
+    departementId = 0;
 }
 
 /*================ GETTERS =================*/
@@ -37,9 +39,24 @@ QString Enseignant::getEmail() const
     return email;
 }
 
+QString Enseignant::getGrade() const
+{
+    return grade;
+}
+
+QString Enseignant::getTelephone() const
+{
+    return telephone;
+}
+
 QString Enseignant::getSpecialite() const
 {
     return specialite;
+}
+
+int Enseignant::getDepartementId() const
+{
+    return departementId;
 }
 
 /*================ SETTERS =================*/
@@ -69,9 +86,24 @@ void Enseignant::setEmail(const QString &email)
     this->email = email;
 }
 
+void Enseignant::setGrade(const QString &grade)
+{
+    this->grade = grade;
+}
+
+void Enseignant::setTelephone(const QString &telephone)
+{
+    this->telephone = telephone;
+}
+
 void Enseignant::setSpecialite(const QString &specialite)
 {
     this->specialite = specialite;
+}
+
+void Enseignant::setDepartementId(int departementId)
+{
+    this->departementId = departementId;
 }
 
 /*================ CREATE =================*/
@@ -82,15 +114,18 @@ bool Enseignant::create()
 
     query.prepare(R"(
         INSERT INTO enseignants
-        (matricule, nom, prenom, email, specialite)
-        VALUES (?, ?, ?, ?, ?)
+        (matricule, nom, prenom, grade, email, telephone, specialite, departement_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     )");
 
     query.addBindValue(matricule);
     query.addBindValue(nom);
     query.addBindValue(prenom);
+    query.addBindValue(grade);
     query.addBindValue(email);
+    query.addBindValue(telephone);
     query.addBindValue(specialite);
+    query.addBindValue(departementId > 0 ? QVariant(departementId) : QVariant());
 
     if(!query.exec())
     {
@@ -113,16 +148,22 @@ bool Enseignant::update()
             matricule=?,
             nom=?,
             prenom=?,
+            grade=?,
             email=?,
-            specialite=?
+            telephone=?,
+            specialite=?,
+            departement_id=?
         WHERE id=?
     )");
 
     query.addBindValue(matricule);
     query.addBindValue(nom);
     query.addBindValue(prenom);
+    query.addBindValue(grade);
     query.addBindValue(email);
+    query.addBindValue(telephone);
     query.addBindValue(specialite);
+    query.addBindValue(departementId > 0 ? QVariant(departementId) : QVariant());
     query.addBindValue(id);
 
     if(!query.exec())
@@ -169,8 +210,11 @@ Enseignant Enseignant::getById(int id)
         e.setMatricule(query.value("matricule").toString());
         e.setNom(query.value("nom").toString());
         e.setPrenom(query.value("prenom").toString());
+        e.setGrade(query.value("grade").toString());
         e.setEmail(query.value("email").toString());
+        e.setTelephone(query.value("telephone").toString());
         e.setSpecialite(query.value("specialite").toString());
+        e.setDepartementId(query.value("departement_id").toInt());
     }
 
     return e;
@@ -196,8 +240,11 @@ QList<Enseignant> Enseignant::getAll()
             e.setMatricule(query.value("matricule").toString());
             e.setNom(query.value("nom").toString());
             e.setPrenom(query.value("prenom").toString());
+            e.setGrade(query.value("grade").toString());
             e.setEmail(query.value("email").toString());
+            e.setTelephone(query.value("telephone").toString());
             e.setSpecialite(query.value("specialite").toString());
+            e.setDepartementId(query.value("departement_id").toInt());
 
             liste.append(e);
         }

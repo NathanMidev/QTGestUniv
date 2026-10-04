@@ -1,21 +1,203 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>Form</class>
- <widget class="QWidget" name="Form" >
-  <property name="geometry" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EtudiantForm</class>
+ <widget class="QWidget" name="EtudiantForm">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1000</width>
+    <height>650</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string>Form</string>
+  <property name="windowTitle">
+    <string>Étudiants</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="groupFormulaire">
+     <property name="title">
+      <string>Informations étudiant</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblMatricule">
+        <property name="text">
+         <string>Matricule :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="txtMatricule"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="lblFiliereId">
+        <property name="text">
+         <string>Filière ID :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QSpinBox" name="spinFiliereId">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblNom">
+        <property name="text">
+         <string>Nom :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="txtNom"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="lblNiveau">
+        <property name="text">
+         <string>Niveau :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="txtNiveau"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblPrenom">
+        <property name="text">
+         <string>Prénom :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="txtPrenom"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="lblEmail">
+        <property name="text">
+         <string>Email :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="txtEmail"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblTelephone">
+        <property name="text">
+         <string>Téléphone :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="txtTelephone"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="lblRecherche">
+        <property name="text">
+         <string>Recherche :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="txtRecherche"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnAjouter">
+       <property name="text">
+        <string>Ajouter</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnModifier">
+       <property name="text">
+        <string>Modifier</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSupprimer">
+       <property name="text">
+        <string>Supprimer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnRechercher">
+       <property name="text">
+        <string>Rechercher</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnActualiser">
+       <property name="text">
+        <string>Actualiser</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableEtudiants">
+     <property name="columnCount">
+      <number>8</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Matricule</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Prénom</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Email</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Téléphone</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Niveau</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Filière</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <resources/>
  <connections/>
 </ui>

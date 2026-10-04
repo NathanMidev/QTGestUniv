@@ -1,21 +1,26 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>Form</class>
- <widget class="QWidget" name="Form" >
-  <property name="geometry" >
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>300</height>
-   </rect>
-  </property>
-  <property name="windowTitle" >
-   <string>Form</string>
-  </property>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EmploiTempsForm</class>
+ <widget class="QWidget" name="EmploiTempsForm">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1000</width><height>650</height></rect></property>
+  <property name="windowTitle"><string>Emploi du temps</string></property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item><widget class="QLabel" name="lblBackendEmploi"><property name="text"><string>Gestion indisponible : aucun modèle ni contrôleur Emploi du temps n'est présent.</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+   <item>
+    <widget class="QTableWidget" name="tableEmploisTemps">
+     <property name="columnCount"><number>8</number></property>
+     <column><property name="text"><string>ID</string></property></column>
+     <column><property name="text"><string>Matière ID</string></property></column>
+     <column><property name="text"><string>Salle ID</string></property></column>
+     <column><property name="text"><string>Filière ID</string></property></column>
+     <column><property name="text"><string>Enseignant ID</string></property></column>
+     <column><property name="text"><string>Jour</string></property></column>
+     <column><property name="text"><string>Heure début</string></property></column>
+     <column><property name="text"><string>Heure fin</string></property></column>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <resources/>
  <connections/>
 </ui>

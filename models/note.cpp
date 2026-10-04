@@ -1,5 +1,5 @@
-#include "models/Note.h"
-#include "database/DatabaseManager.h"
+#include "models/note.h"
+#include "database/databasemanager.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -10,6 +10,7 @@ Note::Note()
     id = 0;
     etudiantId = 0;
     matiereId = 0;
+    semestre = 0;
     noteCC = 0;
     noteExamen = 0;
     noteFinale = 0;
@@ -20,6 +21,7 @@ Note::Note()
 int Note::getId() const { return id; }
 int Note::getEtudiantId() const { return etudiantId; }
 int Note::getMatiereId() const { return matiereId; }
+int Note::getSemestre() const { return semestre; }
 float Note::getNoteCC() const { return noteCC; }
 float Note::getNoteExamen() const { return noteExamen; }
 float Note::getNoteFinale() const { return noteFinale; }
@@ -29,6 +31,7 @@ float Note::getNoteFinale() const { return noteFinale; }
 void Note::setId(int id) { this->id = id; }
 void Note::setEtudiantId(int id) { this->etudiantId = id; }
 void Note::setMatiereId(int id) { this->matiereId = id; }
+void Note::setSemestre(int semestre) { this->semestre = semestre; }
 void Note::setNoteCC(float note) { this->noteCC = note; }
 void Note::setNoteExamen(float note) { this->noteExamen = note; }
 void Note::setNoteFinale(float note) { this->noteFinale = note; }
@@ -47,6 +50,7 @@ bool Note::create()
 
     query.addBindValue(etudiantId);
     query.addBindValue(matiereId);
+    query.addBindValue(semestre);
     query.addBindValue(noteCC);
     query.addBindValue(noteExamen);
     query.addBindValue(noteFinale);
@@ -70,6 +74,7 @@ bool Note::update()
         UPDATE notes SET
             etudiant_id=?,
             matiere_id=?,
+            semestre=?,
             note_cc=?,
             note_exam=?,
             note_finale=?
@@ -78,6 +83,7 @@ bool Note::update()
 
     query.addBindValue(etudiantId);
     query.addBindValue(matiereId);
+    query.addBindValue(semestre);
     query.addBindValue(noteCC);
     query.addBindValue(noteExamen);
     query.addBindValue(noteFinale);
@@ -126,6 +132,7 @@ Note Note::getById(int id)
         n.setId(query.value("id").toInt());
         n.setEtudiantId(query.value("etudiant_id").toInt());
         n.setMatiereId(query.value("matiere_id").toInt());
+        n.setSemestre(query.value("semestre").toInt());
         n.setNoteCC(query.value("note_cc").toFloat());
         n.setNoteExamen(query.value("note_exam").toFloat());
         n.setNoteFinale(query.value("note_finale").toFloat());
@@ -152,6 +159,7 @@ QList<Note> Note::getAll()
             n.setId(query.value("id").toInt());
             n.setEtudiantId(query.value("etudiant_id").toInt());
             n.setMatiereId(query.value("matiere_id").toInt());
+            n.setSemestre(query.value("semestre").toInt());
             n.setNoteCC(query.value("note_cc").toFloat());
             n.setNoteExamen(query.value("note_exam").toFloat());
             n.setNoteFinale(query.value("note_finale").toFloat());

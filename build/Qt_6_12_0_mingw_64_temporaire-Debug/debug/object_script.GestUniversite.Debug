@@ -1,0 +1,12 @@
+debug/logincontroller.o
+debug/databaseinitializer.o
+debug/databasemanager.o
+debug/main.o
+debug/mainwindow.o
+debug/enseignant.o
+debug/etudiant.o
+debug/matiere.o
+debug/note.o
+debug/utilisateur.o
+debug/pdfexporter.o
+debug/moc_mainwindow.o

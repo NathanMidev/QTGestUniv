@@ -1,21 +1,53 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>Form</class>
- <widget class="QWidget" name="Form" >
-  <property name="geometry" >
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>300</height>
-   </rect>
-  </property>
-  <property name="windowTitle" >
-   <string>Form</string>
-  </property>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NoteForm</class>
+ <widget class="QWidget" name="NoteForm">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1000</width><height>650</height></rect></property>
+  <property name="windowTitle"><string>Notes</string></property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupNote">
+     <property name="title"><string>Évaluation</string></property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0"><widget class="QLabel" name="lblEtudiant"><property name="text"><string>Étudiant</string></property></widget></item>
+      <item row="0" column="1"><widget class="QComboBox" name="comboEtudiant"/></item>
+      <item row="0" column="2"><widget class="QLabel" name="lblMatiere"><property name="text"><string>Matière</string></property></widget></item>
+      <item row="0" column="3"><widget class="QComboBox" name="comboMatiere"/></item>
+      <item row="1" column="0"><widget class="QLabel" name="lblSemestre"><property name="text"><string>Semestre</string></property></widget></item>
+      <item row="1" column="1"><widget class="QSpinBox" name="spinSemestre"><property name="minimum"><number>1</number></property><property name="maximum"><number>12</number></property></widget></item>
+      <item row="1" column="2"><widget class="QLabel" name="lblCC"><property name="text"><string>Note CC / 20</string></property></widget></item>
+      <item row="1" column="3"><widget class="QDoubleSpinBox" name="spinCC"><property name="maximum"><double>20.000000000000000</double></property><property name="decimals"><number>2</number></property></widget></item>
+      <item row="2" column="0"><widget class="QLabel" name="lblExamen"><property name="text"><string>Note examen / 20</string></property></widget></item>
+      <item row="2" column="1"><widget class="QDoubleSpinBox" name="spinExamen"><property name="maximum"><double>20.000000000000000</double></property><property name="decimals"><number>2</number></property></widget></item>
+      <item row="2" column="2"><widget class="QLabel" name="lblFinale"><property name="text"><string>Note finale / 20</string></property></widget></item>
+      <item row="2" column="3"><widget class="QDoubleSpinBox" name="spinFinale"><property name="maximum"><double>20.000000000000000</double></property><property name="decimals"><number>2</number></property><property name="readOnly"><bool>true</bool></property></widget></item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="actionsLayout">
+     <item><widget class="QPushButton" name="btnAjouter"><property name="text"><string>Ajouter</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnModifier"><property name="text"><string>Modifier</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnSupprimer"><property name="text"><string>Supprimer</string></property></widget></item>
+     <item><widget class="QLineEdit" name="txtRecherche"><property name="placeholderText"><string>Semestre, note ou ID...</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnRechercher"><property name="text"><string>Rechercher</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnActualiser"><property name="text"><string>Actualiser</string></property></widget></item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableNotes">
+    <property name="columnCount"><number>7</number></property>
+     <column><property name="text"><string>ID</string></property></column>
+     <column><property name="text"><string>Étudiant</string></property></column>
+     <column><property name="text"><string>Matière</string></property></column>
+     <column><property name="text"><string>Semestre</string></property></column>
+     <column><property name="text"><string>CC</string></property></column>
+     <column><property name="text"><string>Examen</string></property></column>
+     <column><property name="text"><string>Finale</string></property></column>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <resources/>
  <connections/>
 </ui>

@@ -1,5 +1,5 @@
 #include "models/utilisateur.h"
-#include "database/DatabaseManager.h"
+#include "database/databasemanager.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -8,6 +8,7 @@
 Utilisateur::Utilisateur()
 {
     id = 0;
+    roleId = 0;
 }
 
 /*================ GETTERS =================*/
@@ -32,9 +33,9 @@ QString Utilisateur::getEmail() const
     return email;
 }
 
-QString Utilisateur::getRole() const
+int Utilisateur::getRoleId() const
 {
-    return role;
+    return roleId;
 }
 
 /*================ SETTERS =================*/
@@ -59,9 +60,9 @@ void Utilisateur::setEmail(const QString &email)
     this->email = email;
 }
 
-void Utilisateur::setRole(const QString &role)
+void Utilisateur::setRoleId(int roleId)
 {
-    this->role = role;
+    this->roleId = roleId;
 }
 
 /*================ CREATE =================*/
@@ -72,14 +73,14 @@ bool Utilisateur::create()
 
     query.prepare(R"(
         INSERT INTO utilisateurs
-        (username,password,email,role)
+        (username,password,email,role_id)
         VALUES(?,?,?,?)
     )");
 
     query.addBindValue(username);
     query.addBindValue(password);
     query.addBindValue(email);
-    query.addBindValue(role);
+    query.addBindValue(roleId);
 
     if(!query.exec())
     {
@@ -102,14 +103,14 @@ bool Utilisateur::update()
             username=?,
             password=?,
             email=?,
-            role=?
+            role_id=?
         WHERE id=?
     )");
 
     query.addBindValue(username);
     query.addBindValue(password);
     query.addBindValue(email);
-    query.addBindValue(role);
+    query.addBindValue(roleId);
     query.addBindValue(id);
 
     if(!query.exec())
@@ -156,7 +157,7 @@ Utilisateur Utilisateur::getById(int id)
         u.setUsername(query.value("username").toString());
         u.setPassword(query.value("password").toString());
         u.setEmail(query.value("email").toString());
-        u.setRole(query.value("role").toString());
+        u.setRoleId(query.value("role_id").toInt());
     }
 
     return u;
@@ -180,7 +181,7 @@ QList<Utilisateur> Utilisateur::getAll()
             u.setUsername(query.value("username").toString());
             u.setPassword(query.value("password").toString());
             u.setEmail(query.value("email").toString());
-            u.setRole(query.value("role").toString());
+            u.setRoleId(query.value("role_id").toInt());
 
             liste.append(u);
         }
@@ -219,7 +220,7 @@ bool Utilisateur::login(const QString &username,
         user.setUsername(query.value("username").toString());
         user.setPassword(query.value("password").toString());
         user.setEmail(query.value("email").toString());
-        user.setRole(query.value("role").toString());
+        user.setRoleId(query.value("role_id").toInt());
 
         return true;
     }

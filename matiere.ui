@@ -1,21 +1,50 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>Form</class>
- <widget class="QWidget" name="Form" >
-  <property name="geometry" >
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>300</height>
-   </rect>
-  </property>
-  <property name="windowTitle" >
-   <string>Form</string>
-  </property>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MatiereForm</class>
+ <widget class="QWidget" name="MatiereForm">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1000</width><height>650</height></rect></property>
+  <property name="windowTitle"><string>Matières</string></property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupMatiere">
+     <property name="title"><string>Informations matière</string></property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0"><widget class="QLabel" name="lblCode"><property name="text"><string>Code</string></property></widget></item>
+      <item row="0" column="1"><widget class="QLineEdit" name="txtCode"/></item>
+      <item row="0" column="2"><widget class="QLabel" name="lblIntitule"><property name="text"><string>Intitulé</string></property></widget></item>
+      <item row="0" column="3"><widget class="QLineEdit" name="txtIntitule"/></item>
+      <item row="1" column="0"><widget class="QLabel" name="lblCoefficient"><property name="text"><string>Coefficient</string></property></widget></item>
+      <item row="1" column="1"><widget class="QSpinBox" name="spinCoefficient"><property name="minimum"><number>1</number></property><property name="maximum"><number>100</number></property></widget></item>
+      <item row="1" column="2"><widget class="QLabel" name="lblCredits"><property name="text"><string>Crédits</string></property></widget></item>
+      <item row="1" column="3"><widget class="QSpinBox" name="spinCredits"><property name="maximum"><number>100</number></property></widget></item>
+      <item row="2" column="0"><widget class="QLabel" name="lblEnseignant"><property name="text"><string>Enseignant</string></property></widget></item>
+      <item row="2" column="1" colspan="3"><widget class="QComboBox" name="comboEnseignant"/></item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="actionsLayout">
+     <item><widget class="QPushButton" name="btnAjouter"><property name="text"><string>Ajouter</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnModifier"><property name="text"><string>Modifier</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnSupprimer"><property name="text"><string>Supprimer</string></property></widget></item>
+     <item><widget class="QLineEdit" name="txtRecherche"><property name="placeholderText"><string>Code ou intitulé...</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnRechercher"><property name="text"><string>Rechercher</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnActualiser"><property name="text"><string>Actualiser</string></property></widget></item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableMatieres">
+     <property name="columnCount"><number>6</number></property>
+     <column><property name="text"><string>ID</string></property></column>
+     <column><property name="text"><string>Code</string></property></column>
+     <column><property name="text"><string>Intitulé</string></property></column>
+     <column><property name="text"><string>Coefficient</string></property></column>
+     <column><property name="text"><string>Crédits</string></property></column>
+     <column><property name="text"><string>Enseignant</string></property></column>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <resources/>
  <connections/>
 </ui>

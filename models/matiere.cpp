@@ -1,14 +1,17 @@
 #include "models/matiere.h"
-#include "database/DatabaseManager.h"
+#include "database/databasemanager.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QVariant>
 
 Matiere::Matiere()
 {
     id = 0;
+    coefficient = 0;
     credits = 0;
+    enseignantId = 0;
 }
 
 /*================ GETTERS =================*/
@@ -28,9 +31,19 @@ QString Matiere::getIntitule() const
     return intitule;
 }
 
+int Matiere::getCoefficient() const
+{
+    return coefficient;
+}
+
 int Matiere::getCredits() const
 {
     return credits;
+}
+
+int Matiere::getEnseignantId() const
+{
+    return enseignantId;
 }
 
 /*================ SETTERS =================*/
@@ -50,9 +63,19 @@ void Matiere::setIntitule(const QString &intitule)
     this->intitule = intitule;
 }
 
+void Matiere::setCoefficient(int coefficient)
+{
+    this->coefficient = coefficient;
+}
+
 void Matiere::setCredits(int credits)
 {
     this->credits = credits;
+}
+
+void Matiere::setEnseignantId(int enseignantId)
+{
+    this->enseignantId = enseignantId;
 }
 
 /*================ CREATE =================*/
@@ -63,13 +86,15 @@ bool Matiere::create()
 
     query.prepare(R"(
         INSERT INTO matieres
-        (code,intitule,credits)
-        VALUES(?,?,?)
+        (code,intitule,coefficient,credits,enseignant_id)
+        VALUES(?,?,?,?,?)
     )");
 
     query.addBindValue(code);
     query.addBindValue(intitule);
+    query.addBindValue(coefficient);
     query.addBindValue(credits);
+    query.addBindValue(enseignantId > 0 ? QVariant(enseignantId) : QVariant());
 
     if(!query.exec())
     {
@@ -91,13 +116,17 @@ bool Matiere::update()
         SET
             code=?,
             intitule=?,
-            credits=?
+            coefficient=?,
+            credits=?,
+            enseignant_id=?
         WHERE id=?
     )");
 
     query.addBindValue(code);
     query.addBindValue(intitule);
+    query.addBindValue(coefficient);
     query.addBindValue(credits);
+    query.addBindValue(enseignantId > 0 ? QVariant(enseignantId) : QVariant());
     query.addBindValue(id);
 
     if(!query.exec())
@@ -143,7 +172,9 @@ Matiere Matiere::getById(int id)
         m.setId(query.value("id").toInt());
         m.setCode(query.value("code").toString());
         m.setIntitule(query.value("intitule").toString());
+        m.setCoefficient(query.value("coefficient").toInt());
         m.setCredits(query.value("credits").toInt());
+        m.setEnseignantId(query.value("enseignant_id").toInt());
     }
 
     return m;
@@ -166,7 +197,9 @@ QList<Matiere> Matiere::getAll()
             m.setId(query.value("id").toInt());
             m.setCode(query.value("code").toString());
             m.setIntitule(query.value("intitule").toString());
+            m.setCoefficient(query.value("coefficient").toInt());
             m.setCredits(query.value("credits").toInt());
+            m.setEnseignantId(query.value("enseignant_id").toInt());
 
             liste.append(m);
         }

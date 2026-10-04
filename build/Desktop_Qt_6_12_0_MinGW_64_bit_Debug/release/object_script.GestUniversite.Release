@@ -1,0 +1,12 @@
+release/logincontroller.o
+release/databaseinitializer.o
+release/databasemanager.o
+release/main.o
+release/mainwindow.o
+release/enseignant.o
+release/etudiant.o
+release/matiere.o
+release/note.o
+release/utilisateur.o
+release/pdfexporter.o
+release/moc_mainwindow.o

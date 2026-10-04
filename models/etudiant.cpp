@@ -1,5 +1,5 @@
-#include "models/Etudiant.h"
-#include "database/DatabaseManager.h"
+#include "models/etudiant.h"
+#include "database/databasemanager.h"
 
 #include <QSqlQuery>
 #include <QSqlError>

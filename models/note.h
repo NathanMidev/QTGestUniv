@@ -9,6 +9,7 @@ private:
     int id;
     int etudiantId;
     int matiereId;
+    int semestre;
     float noteCC;
     float noteExamen;
     float noteFinale;
@@ -19,6 +20,7 @@ public:
     int getId() const;
     int getEtudiantId() const;
     int getMatiereId() const;
+    int getSemestre() const;
     float getNoteCC() const;
     float getNoteExamen() const;
     float getNoteFinale() const;
@@ -26,6 +28,7 @@ public:
     void setId(int id);
     void setEtudiantId(int id);
     void setMatiereId(int id);
+    void setSemestre(int semestre);
     void setNoteCC(float note);
     void setNoteExamen(float note);
     void setNoteFinale(float note);
